@@ -15,51 +15,77 @@ const progressbar = document.getElementById('progress');
 
 const quizQuestions = [
     {
-        question: "What is the capital of the Philippines?",
+        question: "Which language runs in a web browser?",
         answers: [
-            { text: "Davao", correct: false },
-            { text: "Cebu", correct: false },
-            { text: "Manila", correct: true },
-            { text: "Maguindanao", correct: false },
+            { text: "Java", correct: false },
+            { text: "C", correct: false },
+            { text: "Python", correct: false },
+            { text: "JavaScript", correct: true },
         ]
     },
     {
-        question: "Who is our national hero in the Philippines?",
+        question: "What does CSS stand for?",
         answers: [
-            { text: "Apolinario Mabini", correct: false },
-            { text: "Jose Rizal", correct: true },
-            { text: "Andres Bonifacio", correct: false },
-            { text: "J Rizz", correct: false },
-            { text: "Jesus Christ", correct: false },
+            { text: "Central Style Sheets", correct: false },
+            { text: "Cascading Style Sheets", correct: true },
+            { text: "Cascading Simple Sheets", correct: false },
+            { text: "Cars SUVs Sailboats", correct: false },
         ]
     },
     {
-        question: "What is the largest island in the Philippines?",
+        question: "What does HTML stand for?",
         answers: [
-            { text: "Mindanao", correct: false },
-            { text: "Visayas", correct: false },
-            { text: "Luzon", correct: true },
-            { text: "Palawan", correct: false },
+            { text: "Hypertext Markup Language", correct: true },
+            { text: "Hyperloop Machine Language", correct: false },
+            { text: "Hyperlinks and Text Markup Language", correct: false },
+            { text: "Home Tool Markup Language", correct: false },
         ]
     },
     {
-        question: "What is the national language of the Philippines?",
+        question: "Which company developed the React library?",
         answers: [
-            { text: "English", correct: false },
-            { text: "Filipino", correct: true },
-            { text: "Spanish", correct: false },
-            { text: "Cebuano", correct: false },
+            { text: "Google", correct: false },
+            { text: "Facebook", correct: true },
+            { text: "Netflix", correct: false },
+            { text: "Microsoft", correct: false },
         ]
     },
     {
-        question: "In what year did the Philippines declare independence from Spain?",
+        question: "Inside which HTML element do we put JavaScript?",
         answers: [
-            { text: "1898", correct: true },
-            { text: "1946", correct: false },
-            { text: "1965", correct: false },
-            { text: "1986", correct: false },
+            { text: "<javascript>", correct: false },
+            { text: "<script>", correct: true },
+            { text: "<js>", correct: false },
+            { text: "<code>", correct: false },
         ]
-    }
+    },
+    {
+        question: "Which keyword creates a constant in JavaScript?",
+        answers: [
+            { text: "var", correct: false },
+            { text: "let", correct: false },
+            { text: "const", correct: true },
+            { text: "static", correct: false },
+        ]
+    },
+    {
+        question: "What selector targets an ID in CSS?",
+        answers: [
+            { text: "#", correct: true },
+            { text: ".", correct: false },
+            { text: "*", correct: false },
+            { text: "&", correct: false },
+        ]
+    },
+    {
+        question: "Which array method creates a new array with filtered items?",
+        answers: [
+            { text: "map", correct: false },
+            { text: "forEach", correct: false },
+            { text: "filter", correct: true },
+            { text: "reduce", correct: false },
+        ]
+    },
 ]
 
 // Quiz State Variables
