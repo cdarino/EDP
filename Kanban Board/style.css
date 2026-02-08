@@ -7,6 +7,11 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* Utility class for toggling visibility */
+.hidden{
+    display: none;
+}
+
 body{
     background-color: #0b0f14;
     display: flex;
@@ -61,6 +66,130 @@ h1{
     cursor: grab;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* List controls and task form styling */
+.add-task-btn{
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0.5rem 0.6rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #2a3b52;
+    color: #f0f3f8;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.add-task-btn:hover{
+    background-color: #3a4f6c;
+}
+
+.task-form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 0;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Override form display when hidden */
+.task-form.hidden{
+    display: none;
+}
+
+/* Visible state with transition */
+.task-form.is-open{
+    margin-bottom: 12px;
+    max-height: 220px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.task-form input,
+.card-edit input{
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background-color: #0f151e;
+    color: #f0f3f8;
+}
+
+.form-actions{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.form-actions button{
+    flex: 1;
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: #2a3b52;
+    color: #f0f3f8;
+}
+
+.form-actions button:hover{
+    background-color: #3a4f6c;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    margin-top: 6px;
+}
+
+/* Card content, category tag, and action buttons */
+.card-display{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.card-category{
+    font-size: 0.85rem;
+    color: #b9c2d0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(99, 162, 255, 0.15);
+    width: fit-content;
+}
+
+.card-actions{
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+}
+
+.card-actions button{
+    flex: 1;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: #2a3b52;
+    color: #f0f3f8;
+    font-size: 0.85rem;
+}
+
+.card-actions button:hover{
+    background-color: #3a4f6c;
+}
+
+.card.editing{
+    cursor: default;
+}
+
+.card.editing .card-display,
+.card.editing .card-actions{
+    display: none;
 }
 
 .card:active{
