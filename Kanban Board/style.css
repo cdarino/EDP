@@ -64,7 +64,7 @@ h1{
     margin-bottom: 10px;
     border-radius: 8px;
     cursor: grab;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8pxrgba(0, 0, 0, 0.3);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -80,7 +80,6 @@ h1{
     cursor: pointer;
     transition: background-color 0.2s;
 }
-
 .add-task-btn:hover{
     background-color: #3a4f6c;
 }
@@ -115,8 +114,7 @@ h1{
 .task-form input,
 .card-edit input{
     padding: 0.6rem 0.8rem;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;border: 1px solid rgba(255, 255, 255, 0.12);
     background-color: #0f151e;
     color: #f0f3f8;
 }
@@ -144,6 +142,7 @@ h1{
     display: flex;
     flex-direction: column;
     margin-top: 6px;
+
 }
 
 /* Card content, category tag, and action buttons */
@@ -212,7 +211,6 @@ h1{
         margin-bottom: 20px;
     }
 }
-
 :root{
     color-scheme: dark;
 }
@@ -244,7 +242,6 @@ h1{
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(6px);
 }
-
 .list h2{
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -264,4 +261,30 @@ h1{
 .list.over{
     border-color: rgba(99, 162, 255, 0.4);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(99, 162, 255, 0.15);
+}
+
+/* SEARCH INPUT STYLING (bigger) */
+#search-input {
+    width: 100%;
+    padding: 0.8rem 1rem;      /* bigger input */
+    margin-bottom: 1rem;
+    border-radius: 8px;        /* slightly rounder corners */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background-color: #0f151e;
+    color: #f0f3f8;
+    font-size: 1rem;           /* bigger text */
+}
+
+#search-input::placeholder {
+    color: #b9c2d0;
+    font-size: 1rem;           /* match placeholder size */
+}
+
+/* Remove default blue outline and add custom focus */
+.task-form input:focus,
+.card-edit input:focus,
+#search-input:focus {
+    outline: none; /* remove default highlight */
+    border-color: rgba(99, 162, 255, 0.6); /* soft blue border */
+    box-shadow: 0 0 6px rgba(99, 162, 255, 0.3); /* subtle glow */
 }
