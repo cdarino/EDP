@@ -9,9 +9,15 @@
 <body>
     <div class="container"> <!-- outer container-->
         <h1>Kanban Board</h1>
+
+        <!-- SEARCH BAR (added) -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search tasks or categories...">
+        </div>
+
         <div class="board"> <!-- board-->
             <!-- LIST 1-->
-             <div class="list" id="list1">
+            <div class="list" id="list1">
                 <h2>To Do</h2>
                 <!-- Task controls for this list -->
                 <button class="add-task-btn" type="button">+ Add Task</button>
@@ -25,9 +31,9 @@
                 </form>
                 <!-- Container that holds task cards -->
                 <div class="cards"></div>
-             </div>
-             <!-- LIST 2-->
-             <div class="list" id="list2">
+            </div>
+            <!-- LIST 2-->
+            <div class="list" id="list2">
                 <h2>In Progress</h2>
                 <!-- Task controls for this list -->
                 <button class="add-task-btn" type="button">+ Add Task</button>
@@ -41,9 +47,9 @@
                 </form>
                 <!-- Container that holds task cards -->
                 <div class="cards"></div>
-             </div>
-             <!-- LIST 3-->
-             <div class="list" id="list3">
+            </div>
+            <!-- LIST 3-->
+            <div class="list" id="list3">
                 <h2>Done</h2>
                 <!-- Task controls for this list -->
                 <button class="add-task-btn" type="button">+ Add Task</button>
@@ -57,7 +63,7 @@
                 </form>
                 <!-- Container that holds task cards -->
                 <div class="cards"></div>
-             </div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
