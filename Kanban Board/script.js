@@ -20,11 +20,10 @@ for (const list of lists) {
 
     // Show the task form when the user wants to create a new card.
     addTaskButton.addEventListener('click', () => {
-        // Close other open forms so only one is visible at a time.
-        hideAllTaskForms();
-        openTaskForm(taskForm);
-        taskForm.querySelector('input[name="title"]').focus();
-    });
+    openTaskForm(taskForm);
+    taskForm.querySelector('input[name="title"]').focus();
+});
+
 
     // Hide and reset the form when the user cancels.
     cancelButton.addEventListener('click', () => {
@@ -49,6 +48,8 @@ for (const list of lists) {
         taskForm.reset();
         // Close instantly after adding a card (no close transition).
         closeTaskForm(taskForm, true);
+
+        saveBoardToLocalStorage(); // <--- Persist after adding
     });
 }
 
@@ -108,6 +109,7 @@ board.addEventListener('click', (event) => {
     if (target.classList.contains('delete-btn')) {
         // Delete the selected card.
         card.remove();
+        saveBoardToLocalStorage(); // <--- Persist after delete
         return;
     }
 
@@ -147,6 +149,8 @@ board.addEventListener('submit', (event) => {
 
     updateCardDisplay(card, titleValue, categoryValue);
     exitEditMode(card);
+
+    saveBoardToLocalStorage(); // <--- Persist after edit
 });
 
 // Build a new card element with display content and edit controls.
@@ -234,30 +238,88 @@ function dragStart(event) {
 }
 
 function dragEnd() {
-    console.log('Drag Ended');
+    saveBoardToLocalStorage(); // <--- Persist after drag
 }
 
-function dragOver(event) {
-    event.preventDefault();
-}
-
-function dragEnter(event) {
-    event.preventDefault();
-    this.classList.add('over');
-}
-
-function dragLeave() {
-    this.classList.remove('over');
-}
-
+// Drag and drop handlers
+function dragOver(event) { event.preventDefault(); }
+function dragEnter(event) { event.preventDefault(); this.classList.add('over'); }
+function dragLeave() { this.classList.remove('over'); }
 function dragDrop(event) {
-    const id = event.dataTransfer.getData('text/plain');
-    const card = document.getElementById(id);
-    const cardsContainer = this.querySelector('.cards');
-
-    if (card && cardsContainer) {
-        cardsContainer.appendChild(card);
+    event.preventDefault();
+    const cardId = event.dataTransfer.getData('text/plain');
+    const card = document.getElementById(cardId);
+    if (card) {
+        this.querySelector('.cards').appendChild(card);
+        this.classList.remove('over');
+        saveBoardToLocalStorage(); // <--- Persist after drop
     }
-
-    this.classList.remove('over');
 }
+
+// ===== LOCAL STORAGE =====
+function saveBoardToLocalStorage() {
+    const boardData = [];
+    lists.forEach(list => {
+        list.querySelectorAll('.card').forEach(card => {
+            boardData.push({
+                id: card.id,
+                listId: list.id,
+                title: card.querySelector('.card-title').textContent,
+                category: card.querySelector('.card-category').textContent || ''
+            });
+        });
+    });
+    localStorage.setItem('kanbanBoard', JSON.stringify(boardData));
+}
+
+function loadBoardFromLocalStorage() {
+    const savedData = localStorage.getItem('kanbanBoard');
+    if (!savedData) return;
+
+    const boardData = JSON.parse(savedData);
+    boardData.forEach(item => {
+        const list = document.getElementById(item.listId);
+        if (!list) return;
+
+        const card = buildCard(item.title, item.category);
+        card.id = item.id;
+        list.querySelector('.cards').appendChild(card);
+    });
+}
+
+// Load board on page load
+loadBoardFromLocalStorage();
+
+// ===== SEARCH / FILTER =====
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+
+    lists.forEach(list => {
+        list.querySelectorAll('.card').forEach(card => {
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const category = card.querySelector('.card-category').textContent.toLowerCase();
+            if (title.includes(query) || category.includes(query)) {
+                card.style.display = ''; // show card
+            } else {
+                card.style.display = 'none'; // hide card
+            }
+        });
+    });
+});
+
+// Close any open task form when clicking outside
+document.addEventListener('click', (event) => {
+    for (const list of lists) {
+        const form = list.querySelector('.task-form');
+        const addBtn = list.querySelector('.add-task-btn');
+
+        if (form.classList.contains('is-open')) {
+            // Check if the click is outside the form and the add button
+            if (!form.contains(event.target) && event.target !== addBtn) {
+                closeTaskForm(form);
+                form.reset();
+            }
+        }
+    }
+});
