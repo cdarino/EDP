@@ -1,0 +1,138 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-color: #0b0f14;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container{
+    text-align: center;
+    width: 100%;
+    padding: 1.2rem; 
+}
+
+h1{
+    color: #f0f3f8;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.board{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.list{
+    background-color: #141b24;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 30%;
+    min-height: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.list h2{
+    color: #b9c2d0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.card{
+    background-color: #1f2b3a;
+    color: #f0f3f8;
+    padding: 1rem;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: grab;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:active{
+    cursor: grabbing;
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.list.over{
+    background-color: #233044;
+}
+
+@media(max-width: 770px){
+    .board{
+        flex-direction: column;
+        align-items: center;
+    }
+    .list{
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+:root{
+    color-scheme: dark;
+}
+
+body{
+    background-image:
+        radial-gradient(1000px 600px at 10% -20%, rgba(61, 95, 255, 0.16), transparent 60%),
+        radial-gradient(800px 500px at 90% 0%, rgba(0, 221, 255, 0.12), transparent 55%),
+        radial-gradient(700px 450px at 50% 110%, rgba(133, 99, 255, 0.12), transparent 60%);
+    background-attachment: fixed;
+}
+
+.container{
+    max-width: 1200px;
+}
+
+h1{
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.board{
+    padding: 0.5rem;
+}
+
+.list{
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(6px);
+}
+
+.list h2{
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 1.1rem;
+}
+
+.card{
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.32);
+}
+
+.card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.list.over{
+    border-color: rgba(99, 162, 255, 0.4);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(99, 162, 255, 0.15);
+}
