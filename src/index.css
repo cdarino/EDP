@@ -1,0 +1,37 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+*{
+  padding: 0;
+  margin: 0;
+  font-family: Poppins, Arial, sans-serif;
+}
+
+.welcome-msg{
+  font-size: 2.5rem;
+  background-color: #8F0177;
+  color: #F67031;
+  padding: 10px;
+}
+
+.login-prompt{
+  font-size: 2.5rem;
+  background-color: #1A05A2;
+  color: #DE1A58;
+  padding: 10px;
+}
+
+.list-category{
+  font-size: 2.5;
+  font-weight: bold;
+  color: #DE1A58;
+  background-color: #1A05A2;
+  text-align: center;
+  border: 3px solid;
+}
+
+.list-items{
+  font-size: 2;
+  list-style: none;
+  color: #F67031;
+  text-align: center;
+}
